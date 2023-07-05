@@ -15,7 +15,19 @@ const message = {
   token: registrationToken
 };
 
-await admin.messaging().send(message)
+const notification = {
+  data: {
+    score: '850',
+    time: '2:45'
+  },
+  notification: {
+    title: "Weather Warning!",
+    body: "A new weather warning has been issued for your location.",
+    imageUrl: "https://my-cdn.com/extreme-weather.png",
+  },
+  token: registrationToken}
+
+await admin.messaging().send(notification)
   .then((response) => {
     console.log('Send successful', response)
   })
